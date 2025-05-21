@@ -1,9 +1,7 @@
 import styles from "./AppHeader.module.scss";
 import { FiShoppingBag, FiSearch } from "react-icons/fi";
-import { useState } from "react";
 
 export function AppHeader() {
-  const [showMobileSearch, setShowMobileSearch] = useState(false);
 
   return (
     <>
@@ -21,25 +19,19 @@ export function AppHeader() {
               <FiSearch className={styles.searchIcon} />
             </div>
 
-            <FiSearch
-              className={styles.mobileSearchIcon}
-              onClick={() => setShowMobileSearch(!showMobileSearch)}
-            />
-
             <FiShoppingBag className={styles.icon} />
           </div>
         </nav>
       </header>
 
-      {showMobileSearch && (
         <div className={styles.mobileSearchBar}>
           <input
             type="text"
             placeholder="Procurando por algo específico?"
             className={styles.mobileInput}
           />
+          <FiSearch className={styles.mobileSearchIcon} />
         </div>
-      )}
     </>
   );
 }
