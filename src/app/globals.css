@@ -1,33 +1,41 @@
 /* theme config
 */
 :root {
-  --primary-blue: #5A87E9;
-  --secondary-blue: #4B67A6;
-  --primary-orange: #FFA585;
-  --text-white-color: #fff;
-  --text-black-color: #000;
+
+    --font-saira: 'Saira', sans-serif;
+    --font-saira-stencil: 'Saira Stencil One', cursive;
+
+    --primary-blue: #5A87E9;
+    --secondary-blue: #4B67A6;
+    --primary-orange: #FFA585;
+    --text-white-color: #fff;
+    --text-black-color: #000;
+    --text-gray-color: #999;
 }
 
 
 /* basic reset */
-*{
+* {
     padding: 0;
     margin: 0;
-    box-sizing: border-box; 
+    box-sizing: border-box;
 }
 
-html, body{
+html,
+body {
     overflow-x: hidden;
     scroll-behavior: smooth;
     width: 100vw;
     height: 100vh;
 }
 
-ul, ol, li {
+ul,
+ol,
+li {
     list-style: none;
 }
 
-a{
+a {
     text-decoration: none;
     color: inherit;
 }
