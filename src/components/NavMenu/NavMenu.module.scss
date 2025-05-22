@@ -94,3 +94,15 @@
     display: block;
   }
 }
+
+
+.sort {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.sortSelect {
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+}
