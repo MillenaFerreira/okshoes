@@ -8,9 +8,12 @@
     --primary-blue: #5A87E9;
     --secondary-blue: #4B67A6;
     --primary-orange: #FFA585;
+    --primary-gray: #e0e0e0;
+    --secondary-gray: #d3d3d3;
     --text-white-color: #fff;
     --text-black-color: #000;
     --text-gray-color: #999;
+    --text-gray-secondary-color: #737380
 }
 
 
