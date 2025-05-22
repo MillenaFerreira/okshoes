@@ -1,7 +1,16 @@
+import { useState } from "react";
 import styles from "./AppHeader.module.scss";
 import { FiShoppingBag, FiSearch } from "react-icons/fi";
+import { AppHeaderProps } from "@/types/AppHeaderProps";
 
-export function AppHeader() {
+export function AppHeader({ onSearchChange }: AppHeaderProps) {
+  const [search, setSearch] = useState("");
+
+  const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setSearch(value);
+    onSearchChange(value);
+  };
 
   return (
     <>
@@ -15,6 +24,8 @@ export function AppHeader() {
                 type="text"
                 placeholder="Procurando por algo específico?"
                 className={styles.search}
+                value={search}
+                onChange={handleSearch}
               />
               <FiSearch className={styles.searchIcon} />
             </div>
@@ -29,6 +40,8 @@ export function AppHeader() {
             type="text"
             placeholder="Procurando por algo específico?"
             className={styles.mobileInput}
+            value={search}
+            onChange={handleSearch}
           />
           <FiSearch className={styles.mobileSearchIcon} />
         </div>
