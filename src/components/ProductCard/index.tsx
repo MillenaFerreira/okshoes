@@ -1,30 +1,24 @@
-import Image from 'next/image';
+import { Product } from '@/types/Product';
 import styles from './ProductCard.module.scss';
 
-type Product = {
-  id: number;
-  name: string;
-  price: number;
-  image?: string;
-};
-
-export default function ProductCard({ name, price, image }: Product) {
-  const imageUrl = image || '/fallback.jpg'; // fallback se não tiver imagem
+export default function ProductCard({ name, price_in_cents, image_url }: Product) {
+  const imageUrl = image_url || '/fallback.jpg';
+  const formattedPrice = `R$ ${(price_in_cents / 100).toFixed(2).replace('.', ',')}`;
 
   return (
     <div className={styles.card}>
       <div className={styles.imageWrapper}>
-        <Image
+        <img
           src={imageUrl}
           alt={name}
+          className={styles.image_url}
           width={256}
           height={300}
-          className={styles.image}
         />
       </div>
       <div className={styles.info}>
         <p>{name}</p>
-        <strong>R$ {price.toFixed(2)}</strong>
+        <strong>{formattedPrice}</strong>
       </div>
     </div>
   );
