@@ -2,7 +2,7 @@
 
 import { AppHeader } from "@/components/AppHeader";
 import NavMenu from "@/components/NavMenu";
-import Pagination from "@/components/Pagination/Pagination";
+import Pagination from "@/components/Pagination";
 import ProductGrid from "@/components/ProductGrid";;
 import { fetchProducts } from "@/services/productsService";
 import { Product } from "@/types/Product";
@@ -16,6 +16,7 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
   const [category, setCategory] = useState('all');
   const [sortOption, setSortOption] = useState('');
+  const [searchTerm, setSearchTerm] = useState('');
 
 
   useEffect(() => {
@@ -41,11 +42,18 @@ export default function Home() {
     }
   };
 
+  const handleSearchChange = (value: string) => {
+    setSearchTerm(value);
+    setCurrentPage(1);
+  };
 
-  const filteredProducts =
-    category === 'all'
-      ? allProducts
-      : allProducts.filter((p) => p.category === category);
+  const filteredProducts = searchTerm.trim()
+    ? allProducts.filter((p) =>
+      p.name.toLowerCase().includes(searchTerm.toLowerCase())
+    )
+    : allProducts.filter((p) =>
+      category === 'all' ? true : p.category === category
+    );
 
   const sortedProducts = sortProducts(filteredProducts, sortOption);
 
@@ -56,7 +64,7 @@ export default function Home() {
   
   return (
     <>
-      <AppHeader />
+      <AppHeader onSearchChange={handleSearchChange}/>
       <main className={styles.background}>
         <NavMenu
           products={allProducts}
