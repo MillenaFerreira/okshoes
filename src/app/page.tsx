@@ -14,6 +14,9 @@ export default function Home() {
   const [currentPage, setCurrentPage] = useState(1);
   const [perPage] = useState(12); // número de produtos por página
   const [loading, setLoading] = useState(true);
+  const [category, setCategory] = useState('all');
+  const [sortOption, setSortOption] = useState('');
+
 
   useEffect(() => {
     fetchProducts()
@@ -23,17 +26,44 @@ export default function Home() {
 
   if (loading) return <p>Carregando produtos...</p>;
 
-  // Calcular produtos da página atual
-  const totalPages = Math.ceil(allProducts.length / perPage);
+  const sortProducts = (products: Product[], sort: string): Product[] => {
+    switch (sort) {
+      case 'high-price':
+        return [...products].sort((a, b) => b.price_in_cents - a.price_in_cents);
+      case 'low-price':
+        return [...products].sort((a, b) => a.price_in_cents - b.price_in_cents);
+      case 'most-sold':
+        return [...products].sort((a, b) => b.sales - a.sales);
+      case 'least-sold':
+        return [...products].sort((a, b) => a.sales - b.sales);
+      default:
+        return products;
+    }
+  };
+
+
+  const filteredProducts =
+    category === 'all'
+      ? allProducts
+      : allProducts.filter((p) => p.category === category);
+
+  const sortedProducts = sortProducts(filteredProducts, sortOption);
+
+  const totalPages = Math.ceil(sortedProducts.length / perPage);
   const start = (currentPage - 1) * perPage;
   const end = start + perPage;
-  const currentProducts = allProducts.slice(start, end);
-
+  const currentProducts = sortedProducts.slice(start, end);
+  
   return (
     <>
       <AppHeader />
       <main className={styles.background}>
-        <NavMenu />
+        <NavMenu
+          products={allProducts}
+          activeCategory={category}
+          onCategoryChange={setCategory}
+          onSortChange={setSortOption}
+        />
         <ProductGrid products={currentProducts} />
         <Pagination
           page={currentPage}
