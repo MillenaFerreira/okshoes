@@ -1,38 +1,60 @@
 'use client';
 
-import { useState } from 'react';
+import { NavMenuProps } from '@/types/NavMenuProps';
 import styles from './NavMenu.module.scss';
 import { FaChevronDown, FaFilter } from 'react-icons/fa';
 
-const categories = ['Todos os Produtos', 'Camisetas', 'Canecas'];
+const categories = [
+  { label: 'Todos os Produtos', value: 'all' },
+  { label: 'Camisetas', value: 't-shirts' },
+  { label: 'Canecas', value: 'mugs' },
+];
 
-export default function NavMenu() {
-  const [activeCategory, setActiveCategory] = useState('Todos os Produtos');
+const sortOptions = [
+  { label: 'Maior preço', value: 'high-price' },
+  { label: 'Menor preço', value: 'low-price' },
+  { label: 'Mais vendido', value: 'most-sold' },
+  { label: 'Menos vendido', value: 'least-sold' },
+];
 
-  const handleCategoryClick = (category: string) => {
-    setActiveCategory(category);
-  };
-
+export default function NavMenu({
+  activeCategory,
+  onCategoryChange,
+  onSortChange,
+  products,
+}: NavMenuProps) {
   return (
     <nav className={styles.navWrapper}>
       <div className={styles.nav}>
-        {categories.map((category) => (
+        {categories.map(({ label, value }) => (
           <button
-            key={category}
-            className={`${styles.link} ${activeCategory === category ? styles.active : ''}`}
-            onClick={() => handleCategoryClick(category)}
+            key={value}
+            className={`${styles.link} ${activeCategory === value ? styles.active : ''}`}
+            onClick={() => onCategoryChange(value)}
+            type="button"
           >
-            {category}
+            {label}
           </button>
         ))}
       </div>
 
       <div className={styles.sort}>
-        <span>Ordenar por</span>
-        <FaChevronDown size={12} />
+        <label htmlFor="sort" className={styles.sortLabel}>
+          Ordenar por
+        </label>
+        <select
+          id="sort"
+          className={styles.sortSelect}
+          onChange={(e) => onSortChange(e.target.value)}
+        >
+          {sortOptions.map(({ label, value }) => (
+            <option key={value} value={value}>
+              {label}
+            </option>
+          ))}
+        </select>
       </div>
 
-      {/* Botão filtro só no mobile */}
       <button className={styles.filterButton} aria-label="Filtro" type="button">
         <FaFilter size={20} />
       </button>
