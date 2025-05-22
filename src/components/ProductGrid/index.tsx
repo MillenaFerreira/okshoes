@@ -1,26 +1,18 @@
-import ProductCard from '../ProductCard';
-import styles from './ProductGrid.module.scss';
+import { ProductGridProps } from "@/types/ProductGrid";
+import ProductCard from "../ProductCard";
+import styles from "./ProductGrid.module.scss";
 
-type Product = {
-  id: number;
-  name: string;
-  price: number;
-  image?: string;
-};
-
-type Props = {
-  products: Product[];
-};
-
-export default function ProductGrid({ products }: Props) {
+export default function ProductGrid({ products }: ProductGridProps) {
+  // Componente funcional que recebe as props já tipadas
+  // Desestrutura a propriedade products do objeto de props
+  
   return (
-    <main className={styles.backgroud}>
+    <main className={styles.background}>
       <div className={styles.grid}>
-        {products.map((p) => (
-          <ProductCard key={p.id} {...p} />
+        {products.map((product) => (
+          <ProductCard key={product.id} {...product} /> // Passa todas as propriedades do produto
         ))}
       </div>
-      
     </main>
   );
 }
