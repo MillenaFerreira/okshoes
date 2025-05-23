@@ -51,7 +51,7 @@ O layout da aplicação foi desenvolvido com base no protótipo fornecido no Fig
 ---
 
 ## 🖼️ Prévia do Projeto
- **[🔗 Link do Projeto](okshoes.vercel.app/)**
+ **[🔗 Link do Projeto](https://okshoes.vercel.app/)**
 
 <h3 align="center">
   🖥️ Página de produto
