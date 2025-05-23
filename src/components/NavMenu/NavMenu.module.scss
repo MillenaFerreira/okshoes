@@ -2,14 +2,13 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: var(--secondary-blue);
   color: var(--text-white-color);
   flex-wrap: wrap;
   padding: 1rem;
 
   @media (max-width: 768px) {
-    flex-direction: column;
-    align-items: flex-end;
+    justify-content: space-between;
+    align-items: center;
     gap: 1rem;
   }
 }
@@ -18,10 +17,11 @@
   display: flex;
   gap: 2rem;
   flex-wrap: wrap;
-  padding: 0;
+  padding: 0.5rem 1.3rem;
 
   @media (max-width: 768px) {
     gap: 1rem;
+    padding-left: 0;
   }
 }
 
@@ -59,20 +59,6 @@
   }
 }
 
-.sort {
-  display: flex;
-  align-items: center;
-  gap: 0.4rem;
-  font-size: 0.95rem;
-  cursor: pointer;
-
-  @media (max-width: 768px) {
-    font-size: 0.9rem;
-    align-self: flex-end;
-  }
-}
-
-/* Novo: botão filtro só no mobile */
 .filterButton {
   display: none;
   background: none;
@@ -83,26 +69,116 @@
 }
 
 @media (max-width: 768px) {
-  /* Esconde nav e ordenar no mobile */
+
   .nav,
   .sort {
     display: none;
   }
 
-  /* Mostra só o botão filtro no mobile */
   .filterButton {
     display: block;
   }
 }
 
-
 .sort {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.sortToggle {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  cursor: pointer;
+  user-select: none;
+  padding: 0.5rem 1.3rem;
+
+  @media (max-width: 768px) {
+    padding: 0 0.9rem;
+  }
 }
 
-.sortSelect {
-  padding: 0.25rem 0.5rem;
+.arrow {
+  font-size: 1.2rem;
+  display: flex;
+  justify-content: center;
+}
+
+.menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  border: 1px solid black;
   border-radius: 4px;
+  margin-top: 4px;
+  z-index: 10;
+
+  li {
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    cursor: pointer;
+    color: var(--text-black-color);
+
+    &:hover {
+      background-color: #f0f0f0;
+    }
+  }
+}
+
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 60vw;
+  height: 100vh;
+  background-color: var(--text-white-color);
+  color: var(--text-black-color);
+  box-shadow: 2px 0 10px rgba(0,0,0,0.3);
+  z-index: 1000;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.closeButton {
+  font-size: 2rem;
+  border: none;
+  background: none;
+  align-self: flex-end;
+  cursor: pointer;
+}
+
+.categoriesList {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  
+
+  button {
+    background: none;
+    border: none;
+    font-size: .9rem;
+    text-align: left;
+    padding: 0.5rem;
+    color: var(--text-black-color);
+    cursor: pointer;
+
+    &:hover {
+      background-color: #f0f0f0;
+    }
+  }
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 50vw;
+  width: 50vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.5);
+  z-index: 999;
 }
