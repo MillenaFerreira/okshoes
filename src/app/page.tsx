@@ -8,6 +8,8 @@ import { fetchProducts } from "@/services/productsService";
 import { Product } from "@/types/Product";
 import { useEffect, useState } from "react";
 import styles from "./page.module.scss";
+import { Loading } from "@/components/Loading";
+import { BsFillBoxSeamFill } from "react-icons/bs";
 
 export default function Home() {
   const [allProducts, setAllProducts] = useState<Product[]>([]);
@@ -25,7 +27,7 @@ export default function Home() {
       .finally(() => setLoading(false));
   }, []);
 
-  if (loading) return <p>Carregando produtos...</p>;
+  if (loading) return <Loading />
 
   const sortProducts = (products: Product[], sort: string): Product[] => {
     switch (sort) {
@@ -61,23 +63,34 @@ export default function Home() {
   const start = (currentPage - 1) * perPage;
   const end = start + perPage;
   const currentProducts = sortedProducts.slice(start, end);
-  
+
   return (
     <>
-      <AppHeader onSearchChange={handleSearchChange}/>
+      <AppHeader onSearchChange={handleSearchChange} />
       <main className={styles.background}>
-        <NavMenu
-          products={allProducts}
-          activeCategory={category}
-          onCategoryChange={setCategory}
-          onSortChange={setSortOption}
-        />
-        <ProductGrid products={currentProducts} />
-        <Pagination
-          page={currentPage}
-          totalPages={totalPages}
-          onPageChange={setCurrentPage}
-        />
+        <section className={styles.sectionProducts}>
+          <NavMenu
+            products={allProducts}
+            activeCategory={category}
+            onCategoryChange={setCategory}
+            onSortChange={setSortOption}
+          />
+
+          {filteredProducts.length === 0 && searchTerm.trim() ? (
+            <div className={styles.notFoundBox}>
+              <BsFillBoxSeamFill size={100} />
+              <p>Nenhum produto encontrado.</p>
+            </div>
+          ) : (
+            <ProductGrid products={currentProducts} />
+          )}
+
+          <Pagination
+            page={currentPage}
+            totalPages={totalPages}
+            onPageChange={setCurrentPage}
+          />
+        </section>
       </main>
     </>
   );
