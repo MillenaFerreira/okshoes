@@ -7,8 +7,9 @@
 </p>
 
 <p align="center">
-  <img src="OKN.png" width="600" alt="Capa do Projeto" />
+  <img src="https://github.com/user-attachments/assets/d7aa322f-21d8-4959-8314-48c2aa29a539" width="250" alt="Capa do Projeto" />
 </p>
+
 
 ---
 
@@ -50,9 +51,26 @@ O layout da aplicação foi desenvolvido com base no protótipo fornecido no Fig
 ---
 
 ## 🖼️ Prévia do Projeto
+ **[🔗 Link do Projeto](okshoes.vercel.app/)**
 
-### Página de produto
-<img src="https://user-images.githubusercontent.com/85199865/283251687-1c204a38-9b26-4fa3-89ec-1c8c4d4bde88.png" width="700" alt="Página de detalhes do produto" />
+<h3 align="center">
+  🖥️ Página de produto
+</h3>
+<p align="center">
+  <a href="https://github.com/user-attachments/assets/929d9ad0-8b1d-4d75-85c1-1d2310eee33c" target="_blank">
+    <img src="https://github.com/user-attachments/assets/929d9ad0-8b1d-4d75-85c1-1d2310eee33c" width="900" alt="Capa do Projeto" />
+  </a>
+</p>
+
+<h3 align="center">
+  📱 Página de produto (Versão Mobile)
+</h3>
+<p align="center">
+  <a href="https://github.com/user-attachments/assets/26247b13-f250-478f-87aa-1f6fd90713e3" target="_blank">
+    <img src="https://github.com/user-attachments/assets/26247b13-f250-478f-87aa-1f6fd90713e3" width="350" alt="Capa do Projeto" />
+  </a>
+</p>
+
 
 ---
 
