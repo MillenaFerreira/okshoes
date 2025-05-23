@@ -110,7 +110,7 @@ Para que a aplicação funcione corretamente, é necessário clonar e rodar o ba
 git clone https://github.com/eduardonk9999/Desafio-Front-End
 
 # Acesse a pasta e instale as dependências
-cd api-okshoes
+cd api
 yarn install
 # ou
 npm install
