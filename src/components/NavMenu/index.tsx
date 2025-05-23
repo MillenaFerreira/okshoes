@@ -43,6 +43,21 @@ export default function NavMenu({
         <FaFilter size={20} />
       </button>
 
+      {!showCategories && (
+        <div className={styles.nav}>
+          {categories.map(({ label, value }) => (
+            <button
+              key={value}
+              className={`${styles.link} ${activeCategory === value ? styles.active : ''}`}
+              onClick={() => onCategoryChange(value)}
+              type="button"
+            >
+              {label}
+            </button>
+          ))}
+        </div>
+      )}
+      
       {showCategories && (
         <>
           <div className={styles.sidebar}>
