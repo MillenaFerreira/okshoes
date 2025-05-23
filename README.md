@@ -47,11 +47,10 @@ O layout da aplicação foi desenvolvido com base no protótipo fornecido no Fig
 - **[Apollo Client](https://www.apollographql.com/docs/react/)** – Cliente GraphQL para consumir API
 - **[Vercel](https://vercel.com/)** – Deploy da aplicação
 
-
 ---
 
 ## 🖼️ Prévia do Projeto
- **[🔗 Link do Projeto](https://okshoes.vercel.app/)**
+### **[🔗 Link do Projeto](https://okshoes.vercel.app/)**
 
 <h3 align="center">
   🖥️ Página de produto
