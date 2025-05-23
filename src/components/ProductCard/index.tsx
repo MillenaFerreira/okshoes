@@ -7,18 +7,14 @@ export default function ProductCard({ name, price_in_cents, image_url }: Product
 
   return (
     <div className={styles.card}>
-      <div className={styles.imageWrapper}>
-        <img
-          src={imageUrl}
-          alt={name}
-          className={styles.image_url}
-          width={256}
-          height={300}
-        />
-      </div>
+      <img
+        src={imageUrl}
+        alt={name}
+        className={styles.image}
+      />
       <div className={styles.info}>
-        <p>{name}</p>
-        <strong>{formattedPrice}</strong>
+        <p className={styles.name}>{name}</p>
+        <strong className={styles.price}>{formattedPrice}</strong>
       </div>
     </div>
   );
