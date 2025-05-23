@@ -1,0 +1,39 @@
+.containerLoading{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--secondary-blue);
+}
+
+.customLoading {
+  width: 75px;
+  height: 75px;
+  display: grid;
+  border: 4px solid #0000;
+  border-radius: 50%;
+  border-color:#E4E4ED #0000;
+  animation: s6 1s infinite linear;
+}
+.customLoading::before,
+.customLoading::after {    
+  content: "";
+  grid-area: 1/1;
+  margin: 2px;
+  border: inherit;
+  border-radius: 50%;
+}
+.customLoading::before {
+  border-color: var(--primary-blue) #0000;
+  animation: inherit; 
+  animation-duration: .5s;
+  animation-direction: reverse;
+}
+.customLoading::after {
+  margin: 8px;
+}
+
+@keyframes s6 { 
+  100%{transform: rotate(1turn)}
+}
